@@ -131,7 +131,6 @@ p {
 
 .card-group {
   text-align: center;
-  padding-bottom: 30px;
   color: #204161;
 }
 .list-group-item {
@@ -165,4 +164,30 @@ p {
 .card {
   border-top: none;
   border-bottom: none;
+}
+
+footer {
+  display: block;
+  margin: 0 auto;
+  max-width: 80%;
+  padding-top: 0px;
+  padding-left: 10px;
+}
+.githublink {
+  text-decoration: none;
+  color: #204161;
+  font-size: 0.6em;
+}
+
+.githublink:hover {
+  color: #38858d;
+}
+
+footer p {
+  text-align: center;
+}
+
+#githubicon {
+  width: 15px;
+  height: auto;
 }
