@@ -1,0 +1,168 @@
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body {
+  display: block;
+  margin: 0 auto;
+  padding-top: 50px;
+  max-width: 80%;
+  font-family: "Montserrat", sans-serif;
+  color: #204161;
+}
+
+form {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.inputCity {
+  width: 100%;
+  font-size: 1em;
+  color: #204161;
+  line-height: 2em;
+  text-align: left;
+  border: 1px solid #204161;
+  border-radius: 4px;
+  padding: 6px 0px 6px 6px;
+}
+
+input:focus {
+  border: 1px solid #38858d;
+  outline: none;
+  padding: 6px 0px 6px 6px;
+}
+
+button {
+  position: absolute;
+  width: 100px;
+  color: #fff;
+  line-height: 2em;
+  background-color: #38858d;
+  outline: none;
+  border: 1px solid #38858d;
+  border-radius: 0px 4px 4px 0px;
+  box-shadow: none;
+  padding: 6px 20px;
+  top: 0;
+  right: 0;
+  transition: all 300ms ease-in-out;
+}
+
+button:hover {
+  color: #38858d;
+  background-color: #fff;
+}
+
+.container.today .row {
+  padding-left: 0;
+}
+
+.container.today .container {
+  padding-left: 0;
+}
+
+.container.today span {
+  padding-left: 0;
+}
+#city {
+  font-size: 2em;
+}
+
+.country {
+  font-size: 1em;
+}
+
+.current-temp {
+  font-size: 2.8em;
+  color: #38858d;
+  padding-top: 50px;
+}
+
+.current-weather {
+  font-size: 1.6em;
+}
+
+#current-day {
+  font-size: 1.6em;
+  text-align: right;
+}
+
+#current-date {
+  font-size: 1em;
+  text-align: right;
+}
+#current-time {
+  font-size: 1em;
+  text-align: right;
+}
+
+.first-icon-text {
+  margin-top: 44px;
+}
+.fas.fa-weight-hanging,
+.fas.fa-tint,
+.fas.fa-wind {
+  width: auto;
+  padding-right: 1em;
+}
+
+.row.icon-text .fas.fa-weight-hanging,
+.row.icon-text .fas.fa-tint,
+.row.icon-text .fas.fa-wind {
+  position: absolute;
+  top: 3px;
+  right: 100px;
+  padding-right: 0;
+}
+
+.row.icon-text {
+  text-align: right;
+  position: relative;
+  padding-bottom: 0.4em;
+}
+
+p {
+  text-align: left;
+  font-size: 1.5em;
+  padding: 20px 0 4px;
+}
+
+.card-group {
+  text-align: center;
+  padding-bottom: 30px;
+  color: #204161;
+}
+.list-group-item {
+  border: none;
+  color: #204161;
+}
+
+.list-group-item forecast-icon {
+  color: #204161;
+}
+
+.fas fa-sun {
+  color: #204161;
+}
+
+.list-group-item.day {
+  font-size: 1.2em;
+  color: #204161;
+}
+
+.list-group-item.high-temp {
+  color: #38858d;
+  font-size: 1.6em;
+  padding-bottom: 0;
+}
+
+.list-group-item.forecast-icon {
+  font-size: 2em;
+  color: #cec46a;
+}
+.card {
+  border-top: none;
+  border-bottom: none;
+}

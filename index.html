@@ -4,11 +4,178 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>weatherApp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/83c6ca1634.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <h1>Hello Git!</h1>
-    <script src="script.js"></script>
+    <div class="container">
+      <span>
+        <form>
+          <input
+            type="text"
+            class="inputCity"
+            id="inputCity"
+            placeholder="enter city"
+            autofocus="on"
+            autocomplete="on"
+          />
+          <button type="submit" value="search">search</button>
+        </form>
+      </span>
+
+      <div class="container today">
+        <div class="row">
+          <div class="col">
+            <div class="container">
+              <div class="row"><span id="city">Loading...</span></div>
+              <div class="row">
+                <span class="country" id="country"></span>
+              </div>
+              <div class="row">
+                <span class="current-temp"
+                  ><span id="current-temp-celsius"></span>°C /
+                  <span id="current-temp-fahrenheit"></span> °F</span
+                >
+              </div>
+              <div class="row">
+                <span class="current-weather" id="current-weather"
+                  >Light Rain</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="container">
+              <div class="row"><span id="current-day">Friday</span></div>
+              <div class="row"><span id="current-date">11/09</span></div>
+              <div class="row"><span id="current-time">09:38</span></div>
+              <div class="row icon-text first-icon-text">
+                <i class="fas fa-weight-hanging"></i
+                ><span id="current-airpressure">3</span>
+              </div>
+              <div class="row icon-text">
+                <i class="fas fa-tint"></i
+                ><span id="current-humidity">92%</span>
+              </div>
+              <div class="row icon-text">
+                <i class="fas fa-wind"></i><span id="current-wind">5</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <img
+              src="images/girl-rain.png"
+              class="rounded float-end"
+              width="70%"
+              alt="girl standing under an umbrella"
+            />
+          </div>
+        </div>
+      </div>
+
+      <p>5 Day forecast</p>
+
+      <div class="card-group">
+        <div class="card" style="width: 18rem">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item day">Today</li>
+            <li class="list-group-item high-temp">28°C</li>
+            <li class="list-group-item">16°C</li>
+            <li class="list-group-item forecast-icon">
+              <i class="fas fa-sun"></i>
+            </li>
+            <li class="list-group-item"><i class="fas fa-cloud-rain"></i>3%</li>
+            <li class="list-group-item"><i class="fas fa-tint"></i>92%</li>
+            <li class="list-group-item"><i class="fas fa-wind"></i>5 km/h</li>
+          </ul>
+        </div>
+        <div class="card" style="width: 18rem">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item day">Mon 13</li>
+            <li class="list-group-item high-temp">28°C</li>
+            <li class="list-group-item">16°C</li>
+            <li class="list-group-item forecast-icon">
+              <i class="fas fa-sun"></i>
+            </li>
+            <li class="list-group-item"><i class="fas fa-cloud-rain"></i>3%</li>
+            <li class="list-group-item"><i class="fas fa-tint"></i>92%</li>
+            <li class="list-group-item"><i class="fas fa-wind"></i>5 km/h</li>
+          </ul>
+        </div>
+        <div class="card" style="width: 18rem">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item day">Tue 14</li>
+            <li class="list-group-item high-temp">28°C</li>
+            <li class="list-group-item">16°C</li>
+            <li class="list-group-item forecast-icon">
+              <i class="fas fa-sun"></i>
+            </li>
+            <li class="list-group-item"><i class="fas fa-cloud-rain"></i>3%</li>
+            <li class="list-group-item"><i class="fas fa-tint"></i>92%</li>
+            <li class="list-group-item"><i class="fas fa-wind"></i>5 km/h</li>
+          </ul>
+        </div>
+        <div class="card" style="width: 18rem">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item day">Wed 15</li>
+            <li class="list-group-item high-temp">28°C</li>
+            <li class="list-group-item">16°C</li>
+            <li class="list-group-item forecast-icon">
+              <i class="fas fa-sun"></i>
+            </li>
+            <li class="list-group-item"><i class="fas fa-cloud-rain"></i>3%</li>
+            <li class="list-group-item"><i class="fas fa-tint"></i>92%</li>
+            <li class="list-group-item"><i class="fas fa-wind"></i>5 km/h</li>
+          </ul>
+        </div>
+        <div class="card" style="width: 18rem">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item day">Thu 16</li>
+            <li class="list-group-item high-temp">28°C</li>
+            <li class="list-group-item">16°C</li>
+            <li class="list-group-item forecast-icon">
+              <i class="fas fa-sun"></i>
+            </li>
+            <li class="list-group-item"><i class="fas fa-cloud-rain"></i>3%</li>
+            <li class="list-group-item"><i class="fas fa-tint"></i>92%</li>
+            <li class="list-group-item"><i class="fas fa-wind"></i>5 km/h</li>
+          </ul>
+        </div>
+        <div class="card" style="width: 18rem">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item day">Fri 17</li>
+            <li class="list-group-item high-temp">28°C</li>
+            <li class="list-group-item">16°C</li>
+            <li class="list-group-item forecast-icon">
+              <i class="fas fa-sun"></i>
+            </li>
+            <li class="list-group-item"><i class="fas fa-cloud-rain"></i>3%</li>
+            <li class="list-group-item"><i class="fas fa-tint"></i>92%</li>
+            <li class="list-group-item"><i class="fas fa-wind"></i>5 km/h</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="src/script.js"></script>
   </body>
 </html>
