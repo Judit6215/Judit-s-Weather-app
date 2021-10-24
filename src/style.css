@@ -74,17 +74,34 @@ button:hover {
   font-size: 1em;
 }
 
-.current-temp {
-  font-size: 2.8em;
-  color: #38858d;
-  padding-top: 50px;
+.temp-wrapper{
+  padding:50px 0 0 0;
 }
 
-.current-temp .units {
+.current-temp {
+  width: auto;
+  font-size: 2.8em;
+  color: #38858d;
+  }
+
+#current-temp-celsius, #current-temp-fahrenheit{
+  text-decoration: none;
+  color:#204161;
+  cursor: default;
+}
+
+
+.units {
+  width: auto;
   position: relative;
   font-size: 16px;
-  top: -34px;
-}
+  top: -18px;
+  
+  }
+  
+  .units .active:hover {
+    color:red;
+  }
 
 .current-weather {
   font-size: 1.6em;
@@ -109,7 +126,8 @@ button:hover {
 }
 .fas.fa-weight-hanging,
 .fas.fa-tint,
-.fas.fa-wind {
+.fas.fa-wind,
+.forecast-weather i {
   width: auto;
   padding-right: 1em;
 }

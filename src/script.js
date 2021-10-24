@@ -321,11 +321,10 @@ function showTemperature(response) {
   cityLabel.innerHTML = response.data.name;
   let countryLabel = document.querySelector("#country");
   countryLabel.innerHTML = getCountryName(response.data.sys.country);
-  let temperature = Math.round(response.data.main.temp);
-  let currentTempCelsius = document.querySelector("#current-temp-celsius");
-  currentTempCelsius.innerHTML = temperature;
-  convertToFahrenheit();
-  let currentWeather = document.querySelector("#current-weather");
+  celsiusTemperature = Math.round(response.data.main.temp);
+  let currentTempCelsius = document.querySelector(".current-temp");
+  currentTempCelsius.innerHTML = celsiusTemperature;
+   let currentWeather = document.querySelector("#current-weather");
   currentWeather.innerHTML = response.data.weather[0].main;
   let currentAirpressure = document.querySelector("#current-airpressure");
   currentAirpressure.innerHTML = response.data.main.pressure + ` hPa`;
@@ -335,19 +334,9 @@ function showTemperature(response) {
   currentWind.innerHTML = Math.round(response.data.wind.speed) + ` km/h`;
 }
 
-function convertToFahrenheit() {
-  let celsius = document.querySelector("#current-temp-celsius");
-  let fahrenheit = document.querySelector("#current-temp-fahrenheit");
-
-  let number = celsius.innerHTML;
-  number = Math.round((number * 9) / 5 + 32);
-
-  fahrenheit.innerHTML = number;
-}
-
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
-  let temperatureElement = document.querySelector("#current-temp");
+  let temperatureElement = document.querySelector(".current-temp");
 
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
@@ -358,8 +347,8 @@ function displayFahrenheitTemperature(event) {
 function displayCelsiusTemperature(event) {
   event.preventDefault();
   celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#current-temp");
+   fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector(".current-temp");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
@@ -370,7 +359,6 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#current-temp-celsius");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
-
 
 
 
