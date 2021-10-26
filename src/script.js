@@ -316,8 +316,13 @@ function search(event) {
   cityName.value = "";
 }
 
+function getForecast(coordinates){
+   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+};
 
 function showTemperature(response) {
+  console.log(response);
   let cityLabel = document.querySelector("#city");
   cityLabel.innerHTML = response.data.name;
   let countryLabel = document.querySelector("#country");
@@ -333,9 +338,9 @@ function showTemperature(response) {
   currentHumidity.innerHTML = Math.round(response.data.main.humidity) + ` %`;
   let currentWind = document.querySelector("#current-wind");
   currentWind.innerHTML = Math.round(response.data.wind.speed) + ` km/h`;
-  displayForecast(response);
+  
+  getForecast(response.data.coord)
 }
-
 
 
 
@@ -366,30 +371,46 @@ let celsiusLink = document.querySelector("#current-temp-celsius");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 
+function formatDay (timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Wed", "Fri", "Sat"];
+  return days[day];
+}
+
 function displayForecast(response) {
+  let forecast = response.data.daily;
+  console.log(forecast);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="card-group">`;
-  let days = ["Today", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  days.forEach(function (day) {
+
+  
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6){
+
+      if (typeof forecastDay.rain === 'undefined'){
+        forecastDay.rain = 0;
+      }
 
   forecastHTML = forecastHTML + `
 
-
         <div class="card" style="width: 18rem">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item day">${day}</li>
-            <li class="list-group-item high-temp">28°C</li>
-            <li class="list-group-item low-temp">16°C</li>
-            <li class="list-group-item forecast-icon">
-              <i class="fas fa-sun"></i>
+            <li class="list-group-item day">${formatDay(forecastDay.dt)}</li>
+           <li class="list-group-item high-temp">${Math.round(forecastDay.temp.max)}°C </li>
+            <li class="list-group-item low-temp">${Math.round(forecastDay.temp.min)}°C </li>
+            <li class="list-group-item forecast-icon" >
+             <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt=" width="20%"/>
             </li>
-            <li class="list-group-item forecast-weather"><i class="fas fa-cloud-rain"></i>3%</li>
-            <li class="list-group-item forecast-weather"><i class="fas fa-tint"></i>92%</li>
-            <li class="list-group-item forecast-weather"><i class="fas fa-wind"></i>5 km/h</li>
+            <li class="list-group-item forecast-weather"><i class="fas fa-cloud-rain"></i>${forecastDay.rain} %</li>
+            <li class="list-group-item forecast-weather"><i class="fas fa-tint"></i>${forecastDay.humidity} %</li>
+            <li class="list-group-item forecast-weather"><i class="fas fa-wind"></i>${Math.round(forecastDay.wind_speed)} km/h</li>
           </ul>
         </div>
       
 `;
+}
   });
 
 
