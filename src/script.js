@@ -403,7 +403,7 @@ function displayForecast(response) {
             <li class="list-group-item forecast-icon" >
              <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt=" width="20%"/>
             </li>
-            <li class="list-group-item forecast-weather"><i class="fas fa-cloud-rain"></i>${forecastDay.rain} %</li>
+            <li class="list-group-item forecast-weather"><i class="fas fa-cloud-rain"></i>${Math.round(forecastDay.rain)} %</li>
             <li class="list-group-item forecast-weather"><i class="fas fa-tint"></i>${forecastDay.humidity} %</li>
             <li class="list-group-item forecast-weather"><i class="fas fa-wind"></i>${Math.round(forecastDay.wind_speed)} km/h</li>
           </ul>
