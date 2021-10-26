@@ -316,6 +316,7 @@ function search(event) {
   cityName.value = "";
 }
 
+
 function showTemperature(response) {
   let cityLabel = document.querySelector("#city");
   cityLabel.innerHTML = response.data.name;
@@ -332,7 +333,11 @@ function showTemperature(response) {
   currentHumidity.innerHTML = Math.round(response.data.main.humidity) + ` %`;
   let currentWind = document.querySelector("#current-wind");
   currentWind.innerHTML = Math.round(response.data.wind.speed) + ` km/h`;
+  displayForecast(response);
 }
+
+
+
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
@@ -359,6 +364,41 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#current-temp-celsius");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="card-group">`;
+  let days = ["Today", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+
+  forecastHTML = forecastHTML + `
+
+
+        <div class="card" style="width: 18rem">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item day">${day}</li>
+            <li class="list-group-item high-temp">28°C</li>
+            <li class="list-group-item low-temp">16°C</li>
+            <li class="list-group-item forecast-icon">
+              <i class="fas fa-sun"></i>
+            </li>
+            <li class="list-group-item forecast-weather"><i class="fas fa-cloud-rain"></i>3%</li>
+            <li class="list-group-item forecast-weather"><i class="fas fa-tint"></i>92%</li>
+            <li class="list-group-item forecast-weather"><i class="fas fa-wind"></i>5 km/h</li>
+          </ul>
+        </div>
+      
+`;
+  });
+
+
+
+forecastHTML = forecastHTML + `</div>`;
+
+forecastElement.innerHTML = forecastHTML;
+}
+
 
 
 
