@@ -215,3 +215,19 @@ footer p {
   width: 15px;
   height: auto;
 }
+
+.list-group-item.forecast-icon .fa-cloud{
+color:#e9f1f6;
+}
+
+.list-group-item.forecast-icon .fa-cloud-rain{
+  color:#c5dae7;
+  }
+
+  .list-group-item.forecast-icon .fa-bolt{
+    color:#cec46a;
+    }
+
+    .list-group-item.forecast-icon .fa-cloud-sun{
+      color: linear-gradient(to bottom right, #cec46a, #c5dae7);
+      }
