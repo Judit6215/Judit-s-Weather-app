@@ -338,7 +338,35 @@ function showTemperature(response) {
   currentHumidity.innerHTML = Math.round(response.data.main.humidity) + ` %`;
   let currentWind = document.querySelector("#current-wind");
   currentWind.innerHTML = Math.round(response.data.wind.speed) + ` km/h`;
+
+
+ let currentIconSet = {
+"01d":"sun",
+"02d":"cloud-light",
+"03d":"cloud",
+"04d":"cloud-dark",
+"09d":"rain",
+"10d":"rain",
+"11d":"thunder",
+"13d":"snow",
+"50d":"fog",
+
+"01n":"sun",
+"02n":"cloud-light",
+"03n":"cloud",
+"04n":"cloud-dark",
+"09n":"rain",
+"10n":"rain",
+"11n":"thunder",
+"13n":"snow",
+"50n":"fog",
+ }
   
+ let currentIcon = document.querySelector("#current-icon");
+ currentIcon.src=`images/girl-${currentIconSet[response.data.weather[0].icon]}.svg`;
+ console.log(currentIconSet);
+console.log(response.data.weather.icon);
+
   getForecast(response.data.coord)
 }
 
@@ -374,7 +402,7 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 function formatDay (timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Wed", "Fri", "Sat"];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[day];
 }
 
@@ -384,7 +412,32 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="card-group">`;
 
+
+
+  let forecastIconSet = {
+    "01d":"sun",
+    "02d":"cloud-sun",
+    "03d":"cloud",
+    "04d":"cloud",
+    "09d":"cloud-showers-heavy",
+    "10d":"cloud-rain",
+    "11d":"bolt",
+    "13d":"snowflake",
+    "50d":"smog",
+    
+    "01n":"sun",
+    "02n":"cloud-sun",
+    "03n":"cloud",
+    "04n":"cloud",
+    "09n":"cloud-showers-heavy",
+    "10n":"cloud-rain",
+    "11n":"bolt",
+    "13n":"snowflake",
+    "50n":"smog",
+     }
   
+    
+
 
   forecast.forEach(function (forecastDay, index) {
     if (index < 6){
@@ -400,8 +453,8 @@ function displayForecast(response) {
             <li class="list-group-item day">${formatDay(forecastDay.dt)}</li>
            <li class="list-group-item high-temp">${Math.round(forecastDay.temp.max)}°C </li>
             <li class="list-group-item low-temp">${Math.round(forecastDay.temp.min)}°C </li>
-            <li class="list-group-item forecast-icon" >
-             <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt=" width="20%"/>
+            <li class="list-group-item forecast-icon"><i class="fas fa-${forecastIconSet[forecastDay.weather[0].icon]}"></i>
+           
             </li>
             <li class="list-group-item forecast-weather"><i class="fas fa-cloud-rain"></i>${Math.round(forecastDay.rain)} %</li>
             <li class="list-group-item forecast-weather"><i class="fas fa-tint"></i>${forecastDay.humidity} %</li>
@@ -425,3 +478,5 @@ forecastElement.innerHTML = forecastHTML;
 
 let button = document.querySelector("button");
 button.addEventListener("click", search);
+
+
