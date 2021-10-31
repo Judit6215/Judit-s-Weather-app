@@ -329,7 +329,7 @@ function showTemperature(response) {
   countryLabel.innerHTML = getCountryName(response.data.sys.country);
   celsiusTemperature = Math.round(response.data.main.temp);
   let currentTempCelsius = document.querySelector(".current-temp");
-  currentTempCelsius.innerHTML = celsiusTemperature;
+  currentTempCelsius.innerHTML = celsiusTemperature + `°C`;
    let currentWeather = document.querySelector("#current-weather");
   currentWeather.innerHTML = response.data.weather[0].main;
   let currentAirpressure = document.querySelector("#current-airpressure");
@@ -372,7 +372,7 @@ console.log(response.data.weather.icon);
 
 
 
-function displayFahrenheitTemperature(event) {
+/*function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector(".current-temp");
 
@@ -396,7 +396,7 @@ let fahrenheitLink = document.querySelector("#current-temp-fahrenheit");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#current-temp-celsius");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
+celsiusLink.addEventListener("click", displayCelsiusTemperature);*/
 
 
 function formatDay (timestamp) {

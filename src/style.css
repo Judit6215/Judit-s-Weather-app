@@ -1,15 +1,31 @@
+html{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
 .container {
   max-width: 960px;
   margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+
+
 }
 
 body {
-  display: block;
+   display: block;
+   height: 100%;
+   box-sizing: border-box;
   margin: 0 auto;
   padding-top: 50px;
   max-width: 80%;
   font-family: "Montserrat", sans-serif;
   color: #204161;
+  background-image: linear-gradient(
+to bottom right, #eefafa, #eef4fa, #eeeefa);
+
 }
 
 form {
@@ -91,18 +107,15 @@ button:hover {
 }
 
 
-.units {
+/*.units {
   width: auto;
   position: relative;
   font-size: 16px;
   top: -18px;
   
   }
-  
-  .units .active:hover {
-    color:red;
-  }
-
+  */
+ 
 .current-weather {
   font-size: 1.6em;
 }
@@ -181,10 +194,8 @@ p {
   padding-bottom: 0;
 }
 
-.list-group-item.forecast-icon {
-  font-size: 2em;
-  color: #cec46a;
-}
+
+
 .card {
   border-top: none;
   border-bottom: none;
@@ -216,18 +227,54 @@ footer p {
   height: auto;
 }
 
+.list-group-item.forecast-icon {
+  font-size: 2em;
+  color: #cec46a;
+}
+
+.list-group-item.forecast-icon .fa-cloud-sun{
+  background-image: linear-gradient(to bottom right, #cec46a 0 46%, #9dadb2 46% 100%);
+  background-size: 100%;
+  background-clip: text;
+ -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  }
 .list-group-item.forecast-icon .fa-cloud{
-color:#e9f1f6;
+color:#9dadb2;
 }
 
 .list-group-item.forecast-icon .fa-cloud-rain{
-  color:#c5dae7;
+
+  background-image: linear-gradient( #9dadb2 0 65%, #9ac2ce 65% 100%);
+  background-size: 100%;
+  background-clip: text;
+ -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
   }
+
+  .list-group-item.forecast-icon .fa-cloud-showers-heavy{
+
+    background-image: linear-gradient( #525a5e 0 60%, #d7e5ef 60% 100%);
+    background-size: 100%;
+    background-clip: text;
+   -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+    }
 
   .list-group-item.forecast-icon .fa-bolt{
     color:#cec46a;
     }
 
-    .list-group-item.forecast-icon .fa-cloud-sun{
-      color: linear-gradient(to bottom right, #cec46a, #c5dae7);
+    .list-group-item.forecast-icon .fa-snowflake{
+      color: #cfe3e8;
       }
+  
+      .list-group-item.forecast-icon .fa-smog{
+        color: #cfe3e8;
+        }
